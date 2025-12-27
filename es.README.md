@@ -8,10 +8,9 @@
     <img src="https://raw.githubusercontent.com/15Galan/42_project-readmes/master/banners/cursus/libft-light.png#gh-light-mode-only" alt="Banner (claro)" />
     <img src="https://raw.githubusercontent.com/15Galan/42_project-readmes/master/banners/cursus/libft-dark.png#gh-dark-mode-only" alt="Banner (oscuro)" />
     <br>
-    Texto sobre del proyecto; por ejemplo, un resumen de una línea, o incluso nada.
     <br>
-    <a href='https://profile.intra.42.fr/users/antgalan' target="_blank">
-        <img alt='42 (oscuro)' src='https://img.shields.io/badge/Málaga-black?style=flat&logo=42&logoColor=white'/>
+    <a href='https://profile.intra.42.fr/users/rmarin-n' target="_blank">
+        <img alt='42 (oscuro)' src='https://img.shields.io/badge/Barcelona-black?style=flat&logo=42&logoColor=white'/>
     </a>
     <img src="https://img.shields.io/badge/puntuación-125%20%2F%20100-success?color=%2312bab9&style=flat" />
     <img src="https://wakatime.com/badge/github/15Galan/42_project_readmes.svg" alt="Tiempo" />
