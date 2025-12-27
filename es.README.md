@@ -4,6 +4,10 @@
   </a>
 </p>
 
+<div align="centre">
+  <img src="https://raw.githubusercontent.com/15Galan/42_project-readmes/master/banners/cursus/libft-dark.png#gh-dark-mode-only" 
+</div>
+
 # 📚 Libft – Tu primera librería en C
 
 ## 🧾 Descripción
