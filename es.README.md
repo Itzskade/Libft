@@ -10,7 +10,7 @@
     <br>
     <br>
     <a href='https://profile.intra.42.fr/users/rmarin-n' target="_blank">
-        <img alt='42 (oscuro)' src='https://img.shields.io/badge/Barcelona-black?style=flat&logo=42&logoColor=white'/>
+        <img src='https://img.shields.io/badge/Barcelona-black?style=flat&logo=42&logoColor=white'/>
     </a>
     <img src="https://img.shields.io/badge/puntuación-125%20%2F%20100-success?color=%2312bab9&style=flat" />
 </div>
