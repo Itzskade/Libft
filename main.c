@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarin-n <rmarin-n@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 16:46:46 by rmarin-n          #+#    #+#             */
-/*   Updated: 2025/09/26 17:32:11 by rmarin-n         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:42:20 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(void)
 	puts("-------FT_ISASCII-------");
 	printf("ft_isascii(127)\n -Expected: 1\n +Result: %d\n", ft_isascii(127));
 	printf("ft_isascii(128)\n -Expected: 0\n +Result: %d\n", ft_isascii(128));
-	
+
 /* +========================+
    |      ft_isprint.c      |
    +========================+ */
@@ -62,59 +62,83 @@ int	main(void)
    |      ft_memset.c       |
    +========================+ */
 	puts("--------FT_MEMSET--------");
-	char ms[6];
+	char *ms = ft_calloc(6, sizeof(char));
+	if (!ms)
+		return (1);
 	ft_memset(ms, 'X', 5);
 	ms[5] = '\0';
 	printf("ft_memset(\"\", 'X', 5)\n -Expected: XXXXX\n +Result: %s\n", ms);
-
-	ms[6];
 	ft_memset(ms, 'Y', 2);
-	ms[5] = '\0';
 	printf("ft_memset(\"XXXXX\", 'Y', 2)\n -Expected: YYXXX\n +Result: %s\n", ms);
+	free(ms);
+	ms = NULL;
 
 /* +========================+
    |       ft_bzero.c       |
    +========================+ */
 	puts("--------FT_BZERO--------");
-	char bz[5] = "abcd";
+	char *bz = ft_calloc(5, sizeof(char));
+	if (!bz)
+		return (1);
+	ft_strlcpy(bz, "abcd", 5);
 	ft_bzero(bz, 2);
 	printf("ft_bzero(\"abcd\", 2)\n -Expected: cd\n +Result: ");
 	fflush(stdout);
-	write(1, bz, 4);
+	write(1, bz + 2, 2);
 	printf("\n");
+	free(bz);
+	bz = NULL;
 
 /* +========================+
    |      ft_memcpy.c       |
    +========================+ */
 	puts("-------FT_MEMCPY--------");
-	char mcpy[6];
+	char *mcpy = ft_calloc(6, sizeof(char));
+	if (!mcpy)
+		return (1);
 	ft_memcpy(mcpy, "12345", 5);
 	mcpy[5] = '\0';
 	printf("ft_memcpy(\"\", \"12345\", 5)\n -Expected: 12345\n +Result: %s\n", mcpy);
+	free(mcpy);
+	mcpy = NULL;
 
 /* +========================+
    |      ft_memmove.c      |
    +========================+ */
 	puts("-------FT_MEMMOVE------");
-	char mm[6] = "abcde";
+	char *mm = ft_calloc(6, sizeof(char));
+	if (!mm)
+		return (1);
+	ft_strlcpy(mm, "abcde", 6);
 	ft_memmove(mm + 1, mm, 4);
 	printf("ft_memmove(\"abcde\" + 1, \"abcde\", 4)\n -Expected: aabcd\n +Result: %.*s\n", 5, mm);
+	free(mm);
+	mm = NULL;
 
 /* +========================+
    |      ft_strlcpy.c      |
    +========================+ */
 	puts("------FT_STRLCPY-------");
-	char scpy[10];
-	ft_strlcpy(scpy, "Libft", sizeof(scpy));
+	char *scpy = ft_calloc(10, sizeof(char));
+	if (!scpy)
+		return (1);
+	ft_strlcpy(scpy, "Libft", 10);
 	printf("ft_strlcpy(\"\", \"Libft\")\n -Expected: Libft\n +Result: %s\n", scpy);
+	free(scpy);
+	scpy = NULL;
 
 /* +========================+
    |      ft_strlcat.c      |
    +========================+ */
 	puts("-------FT_STRLCAT-------");
-	char scat[20] = "Hola";
-	ft_strlcat(scat, " Mundo", sizeof(scat));
+	char *scat = ft_calloc(20, sizeof(char));
+	if (!scat)
+		return (1);
+	ft_strlcpy(scat, "Hola", 20);
+	ft_strlcat(scat, " Mundo", 20);
 	printf("ft_strlcat(\"Hola\", \"Mundo\") \n -Expected: Hola Mundo\n +Result: %s\n", scat);
+	free(scat);
+	scat = NULL;
 
 /* +========================+
    |      ft_toupper.c      |
@@ -144,7 +168,7 @@ int	main(void)
    +========================+ */
 	puts("------FT_STRRCHR------");
 	printf("ft_strrchr(\"Hola\", 'l')\n -Expected: \"la\"\n +Result: %s\n", ft_strrchr("Hola", 'l'));
-	printf("ft_strrchr(\"MundoFacundo\", 'l')\n -Expected: \"undo\"\n +Result: %s\n", ft_strrchr("MundoFacundo", 'u'));
+	printf("ft_strrchr(\"MundoFacundo\", 'u')\n -Expected: \"undo\"\n +Result: %s\n", ft_strrchr("MundoFacundo", 'u'));
 
 /* +========================+
    |      ft_strncmp.c      |
@@ -174,7 +198,8 @@ int	main(void)
 	puts("------FT_STRNSTR-------");
 	printf("ft_strnstr(\"Hola Mundo\", \"Mun\", 10)\n -Expected: \"Mundo\"\n +Result: %s\n", ft_strnstr("Hola Mundo", "Mun", 10));
 	printf("ft_strnstr(\"Free Libft\", \"L\", 6)\n -Expected: \"Libft\"\n +Result: %s\n", ft_strnstr("Free Libft", "L", 6));
-	printf("ft_strnstr(\"Free Libft\", \"L\", 5)\n -Expected: \"(null)\"\n +Result: %s\n", ft_strnstr("Free Libft", "L", 5));
+	char *res = ft_strnstr("Free Libft", "L", 5);
+	printf("ft_strnstr(\"Free Libft\", \"L\", 5)\n -Expected: (null)\n +Result: %s\n", res ? res : "(null)");
 
 /* +========================+
    |       ft_atoi.c        |
@@ -201,7 +226,7 @@ int	main(void)
    |      ft_strtrim.c      |
    +========================+ */
 	puts("-------FT_STRTRIM------");
-	printf("ft_strtrim('   Libft  ',  " ")\n -Expected: Libft\n +Result: %s\n", ft_strtrim("  Libft  ", " "));
+	printf("ft_strtrim('   Libft  ',  ' ')\n -Expected: Libft\n +Result: %s\n", ft_strtrim("  Libft  ", " "));
 	printf("ft_strtrim('12345uccess54321', \"12345\")\n -Expected: Success\n +Result: %s\n", ft_strtrim("12345Success54321", "12345"));
 
 /* +========================+
@@ -209,10 +234,14 @@ int	main(void)
    +========================+ */
 	puts("-------FT_SPLIT--------");
 	char **split = ft_split("uno,dos,tres", ',');
-	printf("ft_split(\"uno,dos,tres\", ',')""\n -Expected: uno dos tres\n +Result:\n");
-	for (int i = 0; split[i]; i++) {
-    	printf("  [%d] %s\n", i, split[i]);
-	}
+	printf("ft_split(\"uno,dos,tres\", ',')\n -Expected: uno dos tres\n +Result:\n");
+	for (int i = 0; split[i]; i++)
+		printf("  [%d] %s\n", i, split[i]);
+	int si = 0;
+	while (split[si])
+		free(split[si++]);
+	free(split);
+	split = NULL;
 
 /* +========================+
    |       ft_itoa.c        |
@@ -232,8 +261,9 @@ int	main(void)
 	}
 	char *mapped = ft_strmapi("ABC", ft_tolower_iter);
 	printf("ft_strmapi(\"ABC\")\n -Expected: abc\n +Result: %s\n", mapped);
+	free(mapped);
+	mapped = NULL;
 
-	
 	char xor_cipher1(unsigned int i, char c) {
 		(void)i;
 		unsigned char key = (32 + 7);
@@ -242,6 +272,8 @@ int	main(void)
 	}
 	char *mappedxor = ft_strmapi("XorCipher", xor_cipher1);
 	printf("ft_strmapi(\"XorCipher\", xor_cipher1)\n +Expected: HUdNWOBU \n -Result: %s\n", mappedxor);
+	free(mappedxor);
+	mappedxor = NULL;
 
 /* +========================+
    |     ft_striteri.c      |
@@ -251,19 +283,29 @@ int	main(void)
 		(void)i;
 		*c = ft_toupper(*c);
 	}
-	char str[] = "abc";
+	char *str = ft_calloc(4, sizeof(char));
+	if (!str)
+		return (1);
+	ft_strlcpy(str, "abc", 4);
 	ft_striteri(str, toupper_iter);
 	printf("ft_striteri(\"abc\")\n -Expected: ABC\n +Result: %s\n", str);
-
+	free(str);
+	str = NULL;
 
 	void xor_cipher2(unsigned int i, char *c) {
 		(void)i;
 		unsigned char key = (42 + 17);
 		*c ^= key;
 	}
-	char str1[] = "XorCipher";
+	char *str1 = ft_calloc(10, sizeof(char));
+	if (!str1)
+		return (1);
+	ft_strlcpy(str1, "XorCipher", 10);
 	ft_striteri(str1, xor_cipher2);
 	printf("ft_striteri(\"XorCipher\", xor_cipher2)\n +Expected: cTIxRKS^I\n -Result: %s\n", str1);
+	free(str1);
+	str1 = NULL;
+
 /* +========================+
    |    ft_putchar_fd.c     |
    +========================+ */
@@ -303,4 +345,6 @@ int	main(void)
 	fflush(stdout);
 	ft_putnbr_fd(-5678, 1);
 	write(1, "\n", 1);
+
+	return (0);
 }

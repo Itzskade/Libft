@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmarin-n <rmarin-n@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 23:47:36 by rmarin-n          #+#    #+#             */
-/*   Updated: 2025/08/15 19:30:16 by rmarin-n         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:35:27 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char	**free_split(char **arr)
 	while (*tmp)
 		free(*tmp++);
 	free(arr);
+	arr = NULL;
 	return (NULL);
 }
 
